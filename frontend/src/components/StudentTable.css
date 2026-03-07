@@ -1,0 +1,71 @@
+.student-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.student-table th {
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.student-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.student-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.student-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.align-right {
+    text-align: right;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.btn-icon {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-icon.edit:hover:not(:disabled) {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary);
+}
+
+.btn-icon.delete:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+}
+
+.fade-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
