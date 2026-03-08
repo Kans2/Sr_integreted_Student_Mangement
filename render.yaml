@@ -11,11 +11,12 @@ services:
         sync: false # Set this sensitive value manually in the Render dashboard
 
   # Frontend Static Site
-  - type: static_site
+  - type: web
     name: student-frontend
+    env: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    publishPath: dist
+    staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
         fromService:
