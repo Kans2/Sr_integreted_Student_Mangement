@@ -1,8 +1,15 @@
 import { Edit2, Trash2 } from 'lucide-react';
 import './StudentTable.css';
 
-function StudentTable({ students, onEdit, onDelete, loading }) {
+function StudentTable({ students, onEdit, onDelete, loading, searchQuery }) {
     if (students.length === 0 && !loading) {
+        if (searchQuery) {
+            return (
+                <div className="empty-state">
+                    <p>No students match your search query '{searchQuery}'.</p>
+                </div>
+            );
+        }
         return (
             <div className="empty-state">
                 <p>No students found. Add one to get started!</p>

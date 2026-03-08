@@ -41,12 +41,22 @@ const fetchWithLogging = async (url, options = {}) => {
 
 function App() {
   const [students, setStudents] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const [editingStudent, setEditingStudent] = useState(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [studentToDelete, setStudentToDelete] = useState(null);
+
+  // Derived filtered students
+  const filteredStudents = students.filter(student => {
+    const query = searchQuery.toLowerCase();
+    return (
+      student.name.toLowerCase().includes(query) ||
+      student.email.toLowerCase().includes(query)
+    );
+  });
 
   // Fetch all students
   const fetchStudents = async () => {
@@ -137,7 +147,16 @@ function App() {
           <Users size={28} color="#4f46e5" />
           Student Portal
         </h1>
-        <div className="header-actions" style={{ display: 'flex', gap: '1rem' }}>
+        <div className="header-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search by name or email..."
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
           <button
             className="btn"
             onClick={() => setIsFormOpen(true)}
@@ -164,7 +183,8 @@ function App() {
             </div>
           ) : (
             <StudentTable
-              students={students}
+              students={filteredStudents}
+              searchQuery={searchQuery}
               onEdit={handleEdit}
               onDelete={handleDeleteRequest}
               loading={loading}
