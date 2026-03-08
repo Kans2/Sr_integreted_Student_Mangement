@@ -9,7 +9,7 @@ import { exportToExcel } from './utils/exportExcel';
 import './App.css';
 
 // Base URL for the NestJS API
-const API_URL = 'http://localhost:3000/students';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/students';
 
 // Helper for logging fetch calls
 const fetchWithLogging = async (url, options = {}) => {
