@@ -9,8 +9,8 @@ import { exportToExcel } from './utils/exportExcel';
 import './App.css';
 
 // Base URL for the NestJS API. In production, relative path '/students' routes to the same host
-const API_URL = import.meta.env.VITE_API_URL || '/students';
-
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = `${BASE_URL}/students`;
 // Helper for logging fetch calls
 const fetchWithLogging = async (url, options = {}) => {
   const method = options.method || 'GET';
