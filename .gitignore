@@ -61,12 +61,8 @@ frontend/node_modules/
 .parcel-cache
 
 # Build outputs
-dist
-dist-ssr
 build
 out
-backend/dist/
-frontend/dist/
 
 # Serverless directories
 .serverless/
